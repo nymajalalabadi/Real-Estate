@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>RealEstate_IoC</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstate-Application\RealEstate-Application.csproj" />
+    <ProjectReference Include="..\RealEstate-DataLayer\RealEstate-DataLayer.csproj" />
+  </ItemGroup>
+
+</Project>
