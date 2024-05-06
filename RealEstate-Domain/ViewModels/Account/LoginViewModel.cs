@@ -11,7 +11,6 @@ namespace RealEstate_Domain.ViewModels.Account
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -25,5 +24,6 @@ namespace RealEstate_Domain.ViewModels.Account
 
         [TempData]
         public string? ErrorMessage { get; set; }
+
     }
 }

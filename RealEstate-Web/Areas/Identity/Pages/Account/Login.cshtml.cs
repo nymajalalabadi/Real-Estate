@@ -34,6 +34,8 @@ namespace RealEstate_Web.Areas.Identity.Pages.Account
         
         public async Task OnGetAsync(string returnUrl = null)
         {
+            Login = new();
+
             if (!string.IsNullOrEmpty(Login.ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, Login.ErrorMessage);
