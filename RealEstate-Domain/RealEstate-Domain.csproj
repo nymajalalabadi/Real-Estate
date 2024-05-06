@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="InterFaces\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

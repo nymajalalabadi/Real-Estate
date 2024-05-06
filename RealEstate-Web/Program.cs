@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RealEstate_DataLayer.Context;
+using RealEstate_Domain.Entities.Account;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 #endregion
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<UserModel>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
