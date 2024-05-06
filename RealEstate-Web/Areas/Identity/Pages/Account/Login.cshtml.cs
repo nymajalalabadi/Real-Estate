@@ -31,7 +31,6 @@ namespace RealEstate_Web.Areas.Identity.Pages.Account
         [BindProperty]
         public LoginViewModel Login { get; set; }
 
-        
         public async Task OnGetAsync(string returnUrl = null)
         {
             Login = new();
