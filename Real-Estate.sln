@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealEstate-IoC", "RealEstat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RealEstate-Web", "RealEstate-Web", "{982B39A6-8B42-4985-99D3-3B1AF1AFAB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate-Application", "RealEstate-Application\RealEstate-Application.csproj", "{D53EBD7C-5865-475D-9F43-060339F38209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate-Application", "RealEstate-Application\RealEstate-Application.csproj", "{D53EBD7C-5865-475D-9F43-060339F38209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate-DataLayer", "RealEstate-DataLayer\RealEstate-DataLayer.csproj", "{84807B15-E580-4E82-BFE1-113D011A34C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate-DataLayer", "RealEstate-DataLayer\RealEstate-DataLayer.csproj", "{84807B15-E580-4E82-BFE1-113D011A34C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate-Domain", "RealEstate-Domain\RealEstate-Domain.csproj", "{4DE810AB-CD12-4985-8761-0729C99B7F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate-Domain", "RealEstate-Domain\RealEstate-Domain.csproj", "{4DE810AB-CD12-4985-8761-0729C99B7F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate-IoC", "RealEstate-IoC\RealEstate-IoC.csproj", "{A882B151-6778-4086-96E2-C4C504480D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate-IoC", "RealEstate-IoC\RealEstate-IoC.csproj", "{A882B151-6778-4086-96E2-C4C504480D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate-Web", "RealEstate-Web\RealEstate-Web.csproj", "{1CB84ACD-42AD-430C-A78E-DB58B974AB18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate-Web", "RealEstate-Web\RealEstate-Web.csproj", "{1CB84ACD-42AD-430C-A78E-DB58B974AB18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

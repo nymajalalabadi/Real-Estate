@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RealEstate_Domain.Entities.Account;
+using RealEstate_Domain.Entities.RealEstate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace RealEstate_DataLayer.Context
         }
 
         public DbSet<UserModel> Users { get; set; }
+
+        public DbSet<Estate> Estates { get; set; }
     }
 
 }
