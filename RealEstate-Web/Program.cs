@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RealEstate_DataLayer.Context;
 using RealEstate_Domain.Entities.Account;
+using RealEstate_IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +17,19 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 #endregion
 
+#region Add Identity
+
 builder.Services.AddDefaultIdentity<UserModel>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+#endregion
+
+#region LoC
+
+DependencyContainer.RejosterService(builder.Services);
+
+#endregion
 
 builder.Services.AddRazorPages();
 
