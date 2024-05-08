@@ -1,16 +1,15 @@
-﻿using System;
+﻿using RealEstate_Domain.Entities.RealEstate;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstate_Domain.Entities.RealEstate
+namespace RealEstate_Domain.ViewModels.Admin.RealEstate
 {
-    public class Estate
+    public class RealEstateAdminViewModel
     {
-        [Key]   
         public int Id { get; set; }
 
         [Required(ErrorMessage = "{0} نمی تواند خالی وارد شود")]
@@ -36,13 +35,5 @@ namespace RealEstate_Domain.Entities.RealEstate
         [Display(Name = "آدرس")]
         [MaxLength(500)]
         public string Address { get; set; }
-
-        #region Relation
-
-
-
-        #endregion
-
     }
-
 }

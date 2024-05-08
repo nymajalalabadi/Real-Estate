@@ -19,12 +19,16 @@ namespace RealEstate_IoC
 
             services.AddScoped<IUserService, UserService>();
 
+            services.AddScoped<IRealEstatesService, RealEstatesService>();
+
 
             #endregion
 
             #region repositories
 
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IRealEstatesRepository, RealEstatesRepository>();
 
 
             #endregion
