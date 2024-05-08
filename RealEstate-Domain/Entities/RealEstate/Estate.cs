@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RealEstate_Domain.Entities.Category;
 
 namespace RealEstate_Domain.Entities.RealEstate
 {
@@ -37,12 +38,14 @@ namespace RealEstate_Domain.Entities.RealEstate
         [MaxLength(500)]
         public string Address { get; set; }
 
+        public int? CategoryId { get; set; }
+
         #region Relation
 
-
+        [ForeignKey(nameof(CategoryId))]
+        public virtual Category.Category? Category { get; set; }
 
         #endregion
-
     }
 
 }
