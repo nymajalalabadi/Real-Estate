@@ -55,9 +55,20 @@ namespace RealEstate_DataLayer.Repositories
             return await _context.Categories.FindAsync(id);
         }
 
+        public async Task<Estate?> GetEstateById(int id)
+        {
+            return await _context.Estates.Include(e => e.Category).SingleOrDefaultAsync(e => e.Id == id);
+        }
+
+
         public void AddRealEstate(Estate estate)
         {
              _context.Estates.Add(estate);
+        }
+
+        public void EditRealEstate(Estate estate)
+        {
+            _context.Estates.Update(estate);
         }
 
         public async Task SaveChanges()

@@ -19,5 +19,9 @@ namespace RealEstate_Application.Services.Interfaces
         Task<Category?> GetCategoryById(int id);
 
         Task CreateRealEstate(CreateRealEstateViewModel create, int categoryId);
+
+        Task<Estate> GetEstateById(int id);
+
+        Task EditRealEstate(EditRealEstateViewModel edit, int categoryId);
     }
 }

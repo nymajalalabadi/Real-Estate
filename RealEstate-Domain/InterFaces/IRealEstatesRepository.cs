@@ -18,7 +18,11 @@ namespace RealEstate_Domain.InterFaces
 
         Task<Category?> GetCategoryById(int id);
 
+        Task<Estate?> GetEstateById(int id);
+
         void AddRealEstate(Estate estate);
+
+        void EditRealEstate(Estate estate);
 
         Task SaveChanges();
 

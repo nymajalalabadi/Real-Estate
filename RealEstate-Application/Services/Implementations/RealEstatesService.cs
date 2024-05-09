@@ -72,5 +72,49 @@ namespace RealEstate_Application.Services.Implementations
 
             await _realEstatesRepository.SaveChanges();
         }
+
+        public async Task<Estate> GetEstateById(int id)
+        {
+             var esate = await _realEstatesRepository.GetEstateById(id);
+
+            if (esate == null)
+            {
+                return null;
+            }
+
+            return esate;
+        }
+
+        public async Task EditRealEstate(EditRealEstateViewModel edit, int categoryId)
+        {
+            var estate = await _realEstatesRepository.GetEstateById(edit.Id);
+
+            if (estate == null)
+            {
+                return;
+            }
+
+            estate.Title = edit.Title;
+            estate.Description = edit.Description;
+            estate.Price = edit.Price;
+            estate.Address = edit.Address;
+            estate.Metrage = edit.Metrage;
+
+            if (edit.ImgUp != null && edit.ImgUp.IsImage())
+            {
+                var nameImage = Guid.NewGuid().ToString("N") + Path.GetExtension(edit.ImgUp.FileName);
+
+                edit.ImgUp.AddImageToServer(nameImage, PathExtensions.EstateOrginServer, 150, 150, PathExtensions.EstateThumbServer, estate.Image);
+
+                estate.Image = nameImage;
+            }
+
+            estate.CategoryId = categoryId;
+
+            _realEstatesRepository.EditRealEstate(estate);
+
+            await _realEstatesRepository.SaveChanges();
+        }
+
     }
 }
