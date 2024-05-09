@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0005" />
+	  <PackageReference Include="LazZiya.ImageResize" Version="4.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RealEstate-Domain\RealEstate-Domain.csproj" />
   </ItemGroup>
 

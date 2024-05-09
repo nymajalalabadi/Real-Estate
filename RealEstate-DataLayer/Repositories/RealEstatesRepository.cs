@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using RealEstate_DataLayer.Context;
+using RealEstate_Domain.Entities.Category;
 using RealEstate_Domain.Entities.RealEstate;
 using RealEstate_Domain.InterFaces;
 using RealEstate_Domain.ViewModels.Admin.RealEstate;
@@ -36,6 +38,31 @@ namespace RealEstate_DataLayer.Repositories
                 Metrage = c.Metrage,
                 Price = c.Price,
             }).ToListAsync();
+        }
+
+        public List<SelectListItem> GetAllCategories()
+        {
+            return _context.Categories
+                .Select(g => new SelectListItem()
+                {
+                    Text = g.Title,
+                    Value = g.Id.ToString()
+                }).ToList();
+        }
+
+        public async Task<Category?> GetCategoryById(int id)
+        {
+            return await _context.Categories.FindAsync(id);
+        }
+
+        public void AddRealEstate(Estate estate)
+        {
+             _context.Estates.Add(estate);
+        }
+
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

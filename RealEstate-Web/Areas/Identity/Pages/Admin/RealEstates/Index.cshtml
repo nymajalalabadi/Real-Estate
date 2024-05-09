@@ -1,4 +1,5 @@
 ﻿@page
+@using RealEstate_Application.Utils;
 @model RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates.IndexModel
 @{
     ViewData["Title"] = "املاک";
@@ -33,7 +34,7 @@
                                 @foreach (var estate in Model.FilterRealEstate)
                                 {
                                     <tr>
-                                        <td class="text-center align-middle"><img src="~/image/Estates/@estate.Image" class="img-fluid" width="60" height="60" alt=""></td>
+                                        <td class="text-center align-middle"><img src="@(PathExtensions.EstateThumb + estate.Image)" class="img-fluid" width="60" height="60" alt=""></td>
                                         <td class="text-center align-middle">@estate.Title</td>
                                         <td class="text-center align-middle">@estate.Metrage</td>
 
