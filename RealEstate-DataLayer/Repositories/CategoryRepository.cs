@@ -60,6 +60,11 @@ namespace RealEstate_DataLayer.Repositories
             _context.Categories.Update(category);
         }
 
+        public void DeleteCategory(Category category)
+        {
+            _context.Categories.Remove(category);
+        }
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();

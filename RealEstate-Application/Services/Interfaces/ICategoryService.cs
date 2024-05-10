@@ -22,5 +22,7 @@ namespace RealEstate_Application.Services.Interfaces
         Task CreateCategory(CreateCategoryViewModel category);
 
         Task EditCategory(EditCategoryViewModel edit);
+
+        Task DeleteCategory(int categoryId);
     }
 }

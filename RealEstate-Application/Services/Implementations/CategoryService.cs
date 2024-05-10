@@ -84,5 +84,19 @@ namespace RealEstate_Application.Services.Implementations
             await _categoryRepository.SaveChanges();
         }
 
+        public async Task DeleteCategory(int categoryId)
+        {
+            var category = await _categoryRepository.GetCategoryById(categoryId);
+
+            if (category == null)
+            {
+                return;
+            }
+
+            _categoryRepository.DeleteCategory(category);
+
+            await _categoryRepository.SaveChanges();
+        }
+
     }
 }
