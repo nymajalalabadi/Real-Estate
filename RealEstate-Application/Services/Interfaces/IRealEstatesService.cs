@@ -23,5 +23,7 @@ namespace RealEstate_Application.Services.Interfaces
         Task<Estate> GetEstateById(int id);
 
         Task EditRealEstate(EditRealEstateViewModel edit, int categoryId);
+
+        Task DeleteRealEstate(DetailRealEstateViewModel edit);
     }
 }

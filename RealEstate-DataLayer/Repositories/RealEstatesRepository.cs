@@ -70,9 +70,15 @@ namespace RealEstate_DataLayer.Repositories
             _context.Estates.Update(estate);
         }
 
+        public void DeleteRealEstate(Estate estate)
+        {
+            _context.Estates.Remove(estate);
+        }
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();
         }
+
     }
 }

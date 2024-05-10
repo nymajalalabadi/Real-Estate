@@ -115,5 +115,32 @@ namespace RealEstate_Application.Services.Implementations
 
             await _realEstatesRepository.SaveChanges();
         }
+
+        public async Task DeleteRealEstate(DetailRealEstateViewModel edit)
+        {
+            var estate = await _realEstatesRepository.GetEstateById(edit.Id);
+
+            if (estate == null)
+            {
+                return;
+            }
+
+            if (edit.Image != null)
+            {
+                string saveDir = PathExtensions.EstateOrginServer;
+
+                string deletePath = Path.Combine(Directory.GetCurrentDirectory(), saveDir, edit.Image);
+
+                if (File.Exists(deletePath))
+                {
+                    File.Delete(deletePath);
+                }
+            }
+
+             _realEstatesRepository.DeleteRealEstate(estate);
+
+            await _realEstatesRepository.SaveChanges();
+        }
+
     }
 }
