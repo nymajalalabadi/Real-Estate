@@ -19,11 +19,11 @@ namespace RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates
 
         #endregion
 
-        public List<RealEstateAdminViewModel> FilterRealEstate { get; set; }
+        public List<RealEstateAdminViewModel> RealEstate { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
-            FilterRealEstate = await _realEstatesService.GetAllRealEstates();
+            RealEstate = await _realEstatesService.GetAllRealEstates();
 
             return Page();
         }

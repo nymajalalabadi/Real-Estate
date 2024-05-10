@@ -36,16 +36,6 @@ namespace RealEstate_Application.Services.Implementations
            return await _realEstatesRepository.GetAllRealEstates();
         }
 
-        public List<SelectListItem> GetAllCategories()
-        {
-            return _realEstatesRepository.GetAllCategories();
-        }
-
-        public async Task<Category?> GetCategoryById(int id)
-        {
-            return await _realEstatesRepository.GetCategoryById(id);
-        }
-
         public async Task CreateRealEstate(CreateRealEstateViewModel create, int categoryId)
         {
             var newEstate = new Estate()

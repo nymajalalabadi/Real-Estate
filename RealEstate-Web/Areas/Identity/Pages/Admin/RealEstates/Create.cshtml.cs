@@ -12,9 +12,12 @@ namespace RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates
 
         private readonly IRealEstatesService _realEstatesService;
 
-        public CreateModel(IRealEstatesService realEstatesService)
+        private readonly ICategoryService _categoryService;
+
+        public CreateModel(IRealEstatesService realEstatesService, ICategoryService categoryService)
         {
             _realEstatesService = realEstatesService;
+            _categoryService = categoryService;
         }
 
         #endregion
@@ -24,7 +27,7 @@ namespace RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates
 
         public void OnGet()
         {
-            var categories = _realEstatesService.GetAllCategories();
+            var categories = _categoryService.GetAllCategories();
 
             ViewData["Categories"] = new SelectList(categories, "Value", "Text");
         }
@@ -35,7 +38,7 @@ namespace RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates
 
             if (!ModelState.IsValid || string.IsNullOrEmpty(ViewModel.SelectedCategory))
             {
-                var categories = _realEstatesService.GetAllCategories();
+                var categories = _categoryService.GetAllCategories();
 
                 ViewData["Categories"] = new SelectList(categories, "Value", "Text");
 
@@ -48,20 +51,20 @@ namespace RealEstate_Web.Areas.Identity.Pages.Admin.RealEstates
             {
                 ModelState.AddModelError(string.Empty, "دسته بندی انتخاب شده نامعتبر است");
 
-                var categories = _realEstatesService.GetAllCategories();
+                var categories = _categoryService.GetAllCategories();
 
                 ViewData["Categories"] = new SelectList(categories, "Value", "Text");
 
                 return Page();
             }
 
-            var category = await _realEstatesService.GetCategoryById(categoryId);
+            var category = await _categoryService.GetCategoryById(categoryId);
 
             if (category is null)
             {
                 ModelState.AddModelError(string.Empty, "دسته بندی انتخاب شده نامعتبر است");
 
-                var categories = _realEstatesService.GetAllCategories();
+                var categories = _categoryService.GetAllCategories();
 
                 ViewData["Categories"] = new SelectList(categories, "Value", "Text");
 

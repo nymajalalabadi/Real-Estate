@@ -17,7 +17,7 @@
                 <h4 class="text-center font-weight-bold m-auto"> مدیریت املاک </h4>
             </div>
             <div class="card-body">
-                @if (Model.FilterRealEstate.Any())
+                @if (Model.RealEstate.Any())
                 {
                     <div class="table">
                         <table class="table table-bordered table-striped table-hover mt-2">
@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var estate in Model.FilterRealEstate)
+                                @foreach (var estate in Model.RealEstate)
                                 {
                                     <tr>
                                         <td class="text-center align-middle"><img src="@(PathExtensions.EstateThumb + estate.Image)" class="img-fluid" width="60" height="60" alt=""></td>

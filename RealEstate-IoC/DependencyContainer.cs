@@ -21,6 +21,8 @@ namespace RealEstate_IoC
 
             services.AddScoped<IRealEstatesService, RealEstatesService>();
 
+            services.AddScoped<ICategoryService, CategoryService>();
+
 
             #endregion
 
@@ -29,6 +31,8 @@ namespace RealEstate_IoC
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<IRealEstatesRepository, RealEstatesRepository>();
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
             #endregion

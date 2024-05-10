@@ -40,21 +40,6 @@ namespace RealEstate_DataLayer.Repositories
             }).ToListAsync();
         }
 
-        public List<SelectListItem> GetAllCategories()
-        {
-            return _context.Categories
-                .Select(g => new SelectListItem()
-                {
-                    Text = g.Title,
-                    Value = g.Id.ToString()
-                }).ToList();
-        }
-
-        public async Task<Category?> GetCategoryById(int id)
-        {
-            return await _context.Categories.FindAsync(id);
-        }
-
         public async Task<Estate?> GetEstateById(int id)
         {
             return await _context.Estates.Include(e => e.Category).FirstOrDefaultAsync(e => e.Id == id);
