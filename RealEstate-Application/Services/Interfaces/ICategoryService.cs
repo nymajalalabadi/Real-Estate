@@ -17,6 +17,8 @@ namespace RealEstate_Application.Services.Interfaces
 
         Task<List<CategoryAdminViewModel>> GetAllCategoriesForAdmin();
 
+        Task<CategoryAdminViewModel> GetCategoryForDetail(int categoryId);
+
         Task CreateCategory(CreateCategoryViewModel category);
 
         Task EditCategory(EditCategoryViewModel edit);

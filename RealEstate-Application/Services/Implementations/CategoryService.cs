@@ -39,6 +39,23 @@ namespace RealEstate_Application.Services.Implementations
             return await _categoryRepository.GetAllCategoriesForAdmin();
         }
 
+        public async Task<CategoryAdminViewModel> GetCategoryForDetail(int categoryId)
+        {
+            var category = await _categoryRepository.GetCategoryById(categoryId);
+
+            if (category == null)
+            {
+                return null;
+            }
+
+            return new CategoryAdminViewModel()
+            {
+                Id = category.Id,
+                Title = category.Title,
+                Description = category.Description
+            };
+        }
+
         public async Task CreateCategory(CreateCategoryViewModel category)
         {
             var newCategry = new Category()
