@@ -115,6 +115,5 @@ namespace RealEstate_Application.Services.Implementations
 
             await _realEstatesRepository.SaveChanges();
         }
-
     }
 }

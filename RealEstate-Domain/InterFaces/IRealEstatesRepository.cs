@@ -25,6 +25,5 @@ namespace RealEstate_Domain.InterFaces
         void EditRealEstate(Estate estate);
 
         Task SaveChanges();
-
     }
 }
