@@ -51,5 +51,21 @@ namespace RealEstate_Application.Services.Implementations
             await _categoryRepository.SaveChanges();
         }
 
+        public async Task EditCategory(EditCategoryViewModel edit)
+        {
+            var category = await _categoryRepository.GetCategoryById(edit.Id);
+
+            if (category == null)
+            {
+                return;
+            }
+
+            category.Title = edit.Title;
+            category.Description = edit.Description;
+
+            _categoryRepository.UpdateCategory(category);
+            await _categoryRepository.SaveChanges();
+        }
+
     }
 }

@@ -55,6 +55,11 @@ namespace RealEstate_DataLayer.Repositories
             _context.Categories.Add(category);
         }
 
+        public void UpdateCategory(Category category)
+        {
+            _context.Categories.Update(category);
+        }
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();

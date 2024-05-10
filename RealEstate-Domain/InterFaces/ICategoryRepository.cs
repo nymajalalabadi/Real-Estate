@@ -19,6 +19,8 @@ namespace RealEstate_Domain.InterFaces
 
         void AddCategory(Category category);
 
+        void UpdateCategory(Category category);
+
         Task SaveChanges();
     }
 }
