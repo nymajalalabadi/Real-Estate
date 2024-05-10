@@ -49,5 +49,16 @@ namespace RealEstate_DataLayer.Repositories
                 Description = c.Description,
             }).ToListAsync();
         }
+
+        public void AddCategory(Category category)
+        {
+            _context.Categories.Add(category);
+        }
+
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

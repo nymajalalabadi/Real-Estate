@@ -16,5 +16,9 @@ namespace RealEstate_Domain.InterFaces
         List<SelectListItem> GetAllCategories();
 
         Task<List<CategoryAdminViewModel>> GetAllCategoriesForAdmin();
+
+        void AddCategory(Category category);
+
+        Task SaveChanges();
     }
 }

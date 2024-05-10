@@ -38,5 +38,18 @@ namespace RealEstate_Application.Services.Implementations
         {
             return await _categoryRepository.GetAllCategoriesForAdmin();
         }
+
+        public async Task CreateCategory(CreateCategoryViewModel category)
+        {
+            var newCategry = new Category()
+            {
+                Title = category.Title,
+                Description = category.Description,
+            };
+
+            _categoryRepository.AddCategory(newCategry);
+            await _categoryRepository.SaveChanges();
+        }
+
     }
 }
