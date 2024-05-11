@@ -1,4 +1,6 @@
 ﻿@page
+@using RealEstate_Application.Extentions;
+@using RealEstate_Application.Utils;
 @model IndexModel
 @{
     ViewData["Title"] = "خانه";
@@ -18,37 +20,43 @@
 </div>
 <!--    end title-->
 <!--    products-->
-
+@if (Model.RealEstate.Any())
+{
     <div class="products row">
+        @foreach (var estate in Model.RealEstate)
+        {
             <div class="col-lg-4 col-md-6 col-12">
-                <a>
+                <a asp-page="EstateDetails" asp-route-Id="@estate.Id">
                     <div class="product-card">
                         <div class="image">
-                    <img src="~/image/1.jpg" alt="product1" />
+                            <img src="@(PathExtensions.EstateThumb + estate.Image)" alt="@estate.Title">
                         </div>
                         <div class="card-body">
                             <p class="d-flex justify-content-between">
-                                <span> تایتل برای تست است</span>
-                                <span> متراژ تست است</span>
+                                <span> @estate.Title </span>
+                                <span> @estate.Metrage متری </span>
                             </p>
                             <p class="mt-2 address">
                                 <i class="fas fa-map-marked-alt text-orange"></i>
-                                ادرس تست است
+                                @estate.Address
                             </p>
-                            <p class="my-2"> مبلغ : تست است </p>
+                            <p class="my-2"> مبلغ : @estate.Price.ToToman() </p>
                         </div>
                     </div>
                 </a>
             </div>
-
+        }
     </div>
     <h5 class="text-center mt-3">
         <a href="/AllEstates">
             مشاهده همه املاک
         </a>
     </h5>
-
-<h3 class="alert alert-info text-center"> ملکی موجود نیست! </h3>
-
+}
+else
+{
+    <h3 class="alert alert-info text-center"> ملکی موجود نیست! </h3>
+}
 <!--    end products-->
+
 <partial name="_Footer" />

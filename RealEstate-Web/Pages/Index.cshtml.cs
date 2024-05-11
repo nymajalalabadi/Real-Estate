@@ -1,20 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RealEstate_Application.Services.Interfaces;
+using RealEstate_Domain.ViewModels.Admin.RealEstate;
 
 namespace RealEstate_Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        #region consractor
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly IRealEstatesService _realEstatesService;
+
+        public IndexModel(IRealEstatesService realEstatesService)
         {
-            _logger = logger;
+            _realEstatesService = realEstatesService;
         }
 
-        public void OnGet()
-        {
+        #endregion
 
+        public List<RealEstateAdminViewModel> RealEstate { get; set; }
+
+        public async Task<IActionResult> OnGet()
+        {
+            RealEstate = await _realEstatesService.GetAllRealEstates();
+
+            return Page();
         }
     }
 }
