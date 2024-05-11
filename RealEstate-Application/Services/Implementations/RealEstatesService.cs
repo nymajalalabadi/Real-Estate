@@ -36,6 +36,28 @@ namespace RealEstate_Application.Services.Implementations
            return await _realEstatesRepository.GetAllRealEstates();
         }
 
+        public async Task<DetailRealEstateViewModel> GetRealEstateForDetail(int Id)
+        {
+            var estate = await _realEstatesRepository.GetEstateById(Id);
+
+            if (estate == null)
+            {
+                return null;
+            }
+
+            return new DetailRealEstateViewModel()
+            {
+                Id = estate.Id,
+                Title = estate.Title,
+                Description = estate.Description,
+                Price = estate.Price,
+                Metrage = estate.Metrage,
+                Address = estate.Address,
+                Image = estate.Image,
+                CategoryTitle = estate.Category.Title
+            };
+        }
+
         public async Task CreateRealEstate(CreateRealEstateViewModel create, int categoryId)
         {
             var newEstate = new Estate()
