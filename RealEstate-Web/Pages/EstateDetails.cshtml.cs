@@ -35,6 +35,8 @@ namespace RealEstate_Web.Pages
                 return NotFound();
             }
 
+            ViewData["suggested"] = await _realEstatesService.GetAllSuggestedRealEstates(Id);
+
             RealEstate = estate;
 
             return Page();

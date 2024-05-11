@@ -14,6 +14,8 @@ namespace RealEstate_Domain.InterFaces
     {
         Task<List<RealEstateAdminViewModel>> GetAllRealEstates();
 
+        Task<List<SuggestedProductsViewModel>> GetAllSuggestedRealEstates(int id);
+
         Task<Estate?> GetEstateById(int id);
 
         void AddRealEstate(Estate estate);

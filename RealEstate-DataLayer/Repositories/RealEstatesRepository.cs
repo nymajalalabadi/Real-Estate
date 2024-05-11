@@ -40,6 +40,23 @@ namespace RealEstate_DataLayer.Repositories
             }).ToListAsync();
         }
 
+        public async Task<List<SuggestedProductsViewModel>> GetAllSuggestedRealEstates(int id)
+        {
+            return await _context.Estates
+                .Include(c => c.Category)
+                .Where(e => e.Id != id)
+                .Select(c => new SuggestedProductsViewModel()
+                {
+                    Id = c.Id,
+                    Title = c.Title,
+                    Description = c.Description,
+                    Address = c.Address,
+                    Image = c.Image,
+                    Metrage = c.Metrage,
+                    Price = c.Price,
+                }).ToListAsync();
+        }
+
         public async Task<Estate?> GetEstateById(int id)
         {
             return await _context.Estates.Include(e => e.Category).FirstOrDefaultAsync(e => e.Id == id);
@@ -47,7 +64,7 @@ namespace RealEstate_DataLayer.Repositories
 
         public void AddRealEstate(Estate estate)
         {
-             _context.Estates.Add(estate);
+            _context.Estates.Add(estate);
         }
 
         public void EditRealEstate(Estate estate)

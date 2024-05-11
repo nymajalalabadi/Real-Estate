@@ -36,6 +36,11 @@ namespace RealEstate_Application.Services.Implementations
            return await _realEstatesRepository.GetAllRealEstates();
         }
 
+        public async Task<List<SuggestedProductsViewModel>> GetAllSuggestedRealEstates(int id)
+        {
+            return await _realEstatesRepository.GetAllSuggestedRealEstates(id);
+        }
+
         public async Task<DetailRealEstateViewModel> GetRealEstateForDetail(int Id)
         {
             var estate = await _realEstatesRepository.GetEstateById(Id);

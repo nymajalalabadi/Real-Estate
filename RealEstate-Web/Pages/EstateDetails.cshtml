@@ -1,9 +1,12 @@
 ﻿@page
 @using RealEstate_Application.Extentions;
 @using RealEstate_Application.Utils;
+@using RealEstate_Domain.ViewModels.Admin.RealEstate;
 @model RealEstate_Web.Pages.EstateDetailsModel
 @{
     ViewData["Title"] = "جزئیات ملک";
+
+    var suggested = ViewData["suggested"] as List<SuggestedProductsViewModel>;
 }
 <div class="shadow mt-5 p-3">
     <div class="row">
@@ -35,7 +38,7 @@
     </div>
 </div>
 
-@* @if (Model.EstateViewModel.SuggestedProducts.Any())
+@if (suggested.Any() && suggested != null)
 {
     <!--    محصولات مرتبط :-->
     <!--    title-->
@@ -45,13 +48,13 @@
     <!--    end title-->
     <!--    products-->
     <div class="products row">
-        @foreach (var estate in Model.EstateViewModel.SuggestedProducts)
+        @foreach (var estate in suggested)
         {
             <div class="col-lg-4 col-md-6 col-12">
                 <a asp-page="EstateDetails" asp-route-Id="@estate.Id">
                     <div class="product-card">
                         <div class="image">
-                            <img src="~/image/Estates/@estate.Image" alt="product1">
+                            <img src="@(PathExtensions.EstateThumb + estate.Image)" alt="@estate.Title">
                         </div>
                         <div class="card-body">
                             <p class="d-flex justify-content-between">
@@ -70,4 +73,4 @@
         }
     </div>
     <!--    end products-->
-} *@
+}

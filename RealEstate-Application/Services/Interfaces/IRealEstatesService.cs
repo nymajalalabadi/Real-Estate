@@ -14,6 +14,8 @@ namespace RealEstate_Application.Services.Interfaces
     {
         Task<List<RealEstateAdminViewModel>> GetAllRealEstates();
 
+        Task<List<SuggestedProductsViewModel>> GetAllSuggestedRealEstates(int id);
+
         Task<DetailRealEstateViewModel> GetRealEstateForDetail(int id);
 
         Task CreateRealEstate(CreateRealEstateViewModel create, int categoryId);
