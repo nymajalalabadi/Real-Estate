@@ -54,7 +54,9 @@ namespace RealEstate_DataLayer.Repositories
                     Image = c.Image,
                     Metrage = c.Metrage,
                     Price = c.Price,
-                }).ToListAsync();
+                })
+                .Take(4)
+                .ToListAsync();
         }
 
         public async Task<Estate?> GetEstateById(int id)
