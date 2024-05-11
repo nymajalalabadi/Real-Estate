@@ -2,54 +2,43 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "ورود";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-floating">
-                    <input asp-for="Login.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" />
-                    <label asp-for="Login.PhoneNumber" class="form-label"></label>
-                    <span asp-validation-for="Login.PhoneNumber" class="text-danger"></span>
-                </div>
-                <div class="form-floating">
-                    <input asp-for="Login.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                    <label asp-for="Login.Password" class="form-label"></label>
-                    <span asp-validation-for="Login.Password" class="text-danger"></span>
-                </div>
-                <div>
-                    <div class="checkbox">
-                        <label asp-for="Login.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Login.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Login.RememberMe)
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                </div>
-                <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.Login.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
+@section Links
+    {
+    <link rel="stylesheet" href="~/css/Login_Register.css" />
+}
+
+<div class="login-mother">
+    <div class="login-register">
+        <h3 class="text-center text-dark"> ورود به سایت </h3>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <label for="phoneNumber" class="my-2"> شماره همراه: </label>
+            <input asp-for="Login.PhoneNumber" id="phoneNumber" class="form-control">
+            <span asp-validation-for="Login.PhoneNumber" class="text-danger"></span>
+
+            <label for="password" class="my-2"> رمز عبور : </label>
+            <input asp-for="Login.Password" type="password" id="password" class="form-control">
+            <span asp-validation-for="Login.Password" class="text-danger"></span>
+
+            <div class="d-flex align-items-center">
+                <input asp-for="Login.RememberMe" id="checkbox" class="form-control ml-2" type="checkbox">
+                <label for="checkbox"> مرا به خاطر بسپار؟ </label>
+            </div>
+            <a class="text-dark LoginRegister-link d-block" asp-page="Register">
+                حساب کاربری ندارید؟ ثبت نام کنید
+            </a>
+            <div class="login-btn">
+                <button type="submit" class="btn btn-success"> تایید ! </button>
+            </div>
+        </form>
     </div>
 </div>
 
-@section Scripts {
+@section Scripts 
+{
     <partial name="_ValidationScriptsPartial" />
 }
