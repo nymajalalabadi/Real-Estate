@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RealEstate_Domain.Entities.Category;
+using RealEstate_Domain.Entities.Common;
+using System.Collections;
 
 namespace RealEstate_Domain.Entities.RealEstate
 {
@@ -44,6 +46,8 @@ namespace RealEstate_Domain.Entities.RealEstate
 
         [ForeignKey(nameof(CategoryId))]
         public virtual Category.Category? Category { get; set; }
+
+        public ICollection<Favourite> Favourite { get; set; }
 
         #endregion
     }

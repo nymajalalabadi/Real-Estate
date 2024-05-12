@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RealEstate_Domain.Entities.Account;
 using RealEstate_Domain.Entities.Category;
+using RealEstate_Domain.Entities.Common;
 using RealEstate_Domain.Entities.RealEstate;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace RealEstate_DataLayer.Context
         public DbSet<Estate> Estates { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Favourite> Favourites { get; set; }
     }
 
 }
