@@ -10,5 +10,7 @@ namespace RealEstate_Domain.InterFaces
     public interface IUserRepository
     {
         Task<List<UserModel>> GetUserForRole();
+
+        Task<UserModel?> GetUserByUserName(string userName);
     }
 }

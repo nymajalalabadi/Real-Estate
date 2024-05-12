@@ -21,9 +21,16 @@ namespace RealEstate_Application.Services.Implementations
         }
 
         #endregion
+
         public async Task<List<UserModel>> GetUserForRole()
         {
             return await _userRepository.GetUserForRole();
         }
+
+        public async Task<UserModel?> GetUserByUserName(string userName)
+        {
+            return await _userRepository.GetUserByUserName(userName);
+        }
+
     }
 }

@@ -23,6 +23,7 @@ namespace RealEstate_IoC
 
             services.AddScoped<ICategoryService, CategoryService>();
 
+            services.AddScoped<IFavouriteService, FavouriteService>();
 
             #endregion
 
@@ -34,6 +35,7 @@ namespace RealEstate_IoC
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            services.AddScoped<IFavouriteRepository, FavouriteRepository>();
 
             #endregion
 

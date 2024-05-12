@@ -27,5 +27,10 @@ namespace RealEstate_DataLayer.Repositories
         {
           return await _context.Users.ToListAsync();
         }
+
+        public async Task<UserModel?> GetUserByUserName(string userName)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+        }
     }
 }

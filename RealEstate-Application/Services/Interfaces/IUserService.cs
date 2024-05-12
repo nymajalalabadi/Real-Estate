@@ -10,5 +10,7 @@ namespace RealEstate_Application.Services.Interfaces
     public interface IUserService
     {
         Task<List<UserModel>> GetUserForRole();
+
+        Task<UserModel?> GetUserByUserName(string userName);
     }
 }

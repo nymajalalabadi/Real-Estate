@@ -12,9 +12,15 @@ namespace RealEstate_Web.Pages
 
         private readonly IRealEstatesService _realEstatesService;
 
-        public EstateDetailsModel(IRealEstatesService realEstatesService)
+        private readonly IUserService _userService;
+
+        private readonly IFavouriteService _favouriteService;
+
+        public EstateDetailsModel(IRealEstatesService realEstatesService, IUserService userService, IFavouriteService favouriteService)
         {
             _realEstatesService = realEstatesService;
+            _userService = userService;
+            _favouriteService = favouriteService;
         }
 
         #endregion
@@ -41,5 +47,46 @@ namespace RealEstate_Web.Pages
 
             return Page();
         }
+
+        #region add favourite
+
+        public async Task<IActionResult> OnPostAddToFavourites(int Id)
+        {
+            if (User is null || !User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Identity/Account/Login?returnUrl=/EstateDetails?Id=" + Id);
+            }
+
+            if (Id <= 0)
+            {
+                return NotFound();
+            }
+
+            var estate = await _realEstatesService.GetEstateById(Id);
+
+            if (estate is null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userService.GetUserByUserName(User.Identity.Name);
+
+            var checkIfRedundant = await _db.Favourite.FirstOrDefaultAsync(f => f.UserId == user.Id && f.EstateId == Id);
+
+            if (checkIfRedundant is null)
+            {
+                await _db.AddAsync(new FavouriteModel()
+                {
+                    EstateId = Id,
+                    UserId = user.Id
+                });
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToPage("EstateDetails", new { Id });
+        }
+
+
+        #endregion
     }
 }
