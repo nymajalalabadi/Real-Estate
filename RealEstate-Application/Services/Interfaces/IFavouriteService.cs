@@ -11,7 +11,7 @@ namespace RealEstate_Application.Services.Interfaces
     {
         Task<Favourite> IsExistFavourite(string userId, int estateId);
 
-        Task CreateFavourite(Favourite favourite);
+        Task CreateFavourite(string userId, int estateId);
 
     }
 }

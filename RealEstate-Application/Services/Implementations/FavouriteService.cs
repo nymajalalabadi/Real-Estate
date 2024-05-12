@@ -27,8 +27,14 @@ namespace RealEstate_Application.Services.Implementations
             return await _favouriteRepository.IsExistFavourite(userId, estateId);
         }
 
-        public async Task CreateFavourite(Favourite favourite)
+        public async Task CreateFavourite(string userId, int estateId)
         {
+            var favourite = new Favourite()
+            {
+                UserId = userId,
+                EstateId = estateId
+            };
+
             await _favouriteRepository.AddFavourite(favourite);
 
             await _favouriteRepository.SaveChanges();

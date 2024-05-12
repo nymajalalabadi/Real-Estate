@@ -71,21 +71,15 @@ namespace RealEstate_Web.Pages
 
             var user = await _userService.GetUserByUserName(User.Identity.Name);
 
-            var checkIfRedundant = await _db.Favourite.FirstOrDefaultAsync(f => f.UserId == user.Id && f.EstateId == Id);
+            var checkIfRedundant = await _favouriteService.IsExistFavourite(user.Id, Id);
 
             if (checkIfRedundant is null)
             {
-                await _db.AddAsync(new FavouriteModel()
-                {
-                    EstateId = Id,
-                    UserId = user.Id
-                });
-                await _db.SaveChangesAsync();
+                await _favouriteService.CreateFavourite(user.Id, Id);
             }
 
             return RedirectToPage("EstateDetails", new { Id });
         }
-
 
         #endregion
     }
