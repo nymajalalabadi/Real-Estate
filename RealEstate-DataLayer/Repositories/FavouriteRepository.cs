@@ -33,6 +33,11 @@ namespace RealEstate_DataLayer.Repositories
             await _context.Favourites.AddAsync(favourite);
         }
 
+        public async Task<List<Favourite>> GetAllFavourites(string userId)
+        {
+            return await _context.Favourites.Include(f => f.Estate).Where(f => f.UserId == userId).ToListAsync();
+        }
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();

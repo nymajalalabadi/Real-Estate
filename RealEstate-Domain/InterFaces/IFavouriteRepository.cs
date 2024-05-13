@@ -13,6 +13,8 @@ namespace RealEstate_Domain.InterFaces
 
         Task AddFavourite(Favourite favourite);
 
+        Task<List<Favourite>> GetAllFavourites(string userId);
+
         Task SaveChanges();
     }
 }

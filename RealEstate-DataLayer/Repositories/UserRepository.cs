@@ -32,5 +32,11 @@ namespace RealEstate_DataLayer.Repositories
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
         }
+
+        public async Task<UserModel?> GetUserById(string id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
+
     }
 }

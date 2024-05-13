@@ -1,6 +1,8 @@
 ﻿using RealEstate_Application.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using RealEstate_Domain.Entities.Common;
 using RealEstate_Domain.InterFaces;
+using RealEstate_Domain.ViewModels.Favourite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace RealEstate_Application.Services.Implementations
 
         private readonly IFavouriteRepository _favouriteRepository;
 
-        public FavouriteService(IFavouriteRepository favouriteRepository) 
+        public FavouriteService(IFavouriteRepository favouriteRepository)
         {
             _favouriteRepository = favouriteRepository;
         }
@@ -40,5 +42,9 @@ namespace RealEstate_Application.Services.Implementations
             await _favouriteRepository.SaveChanges();
         }
 
+        public async Task<List<Favourite>> GetFavourites(string userId)
+        {
+            return await _favouriteRepository.GetAllFavourites(userId);
+        }
     }
 }

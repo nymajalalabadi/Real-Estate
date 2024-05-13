@@ -12,5 +12,7 @@ namespace RealEstate_Domain.InterFaces
         Task<List<UserModel>> GetUserForRole();
 
         Task<UserModel?> GetUserByUserName(string userName);
+
+        Task<UserModel?> GetUserById(string id);
     }
 }
