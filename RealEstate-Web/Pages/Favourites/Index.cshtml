@@ -14,14 +14,16 @@
                 @foreach (var favourite in Model.Favourites)
                 {
                     <div class="col-lg-5 col-md-6 col-12">
-                        <a asp-page="/EstateDetails" asp-route-Id="@favourite.Id">
+                        <div>
                             <div class="product-card">
                                 <div class="image">
-                                    <img src="@(PathExtensions.EstateOrgin + favourite.Estate.Image)" alt="product1">
+                                    <a asp-page="/EstateDetails" asp-route-Id="@favourite.Id">
+                                        <img src="@(PathExtensions.EstateThumb + favourite.Estate.Image)" alt="@favourite.Estate.Title">
+                                    </a>
                                 </div>
                                 <div class="card-body">
                                     <p class="d-flex justify-content-between">
-                                        <span> @favourite.Estate.Title </span>
+                                        <a asp-page="/EstateDetails" asp-route-Id="@favourite.Id"> @favourite.Estate.Title </a>
                                         <span> @favourite.Estate.Metrage متری </span>
                                     </p>
                                     <p class="mt-2 address">
@@ -30,8 +32,11 @@
                                     </p>
                                     <p class="my-2"> مبلغ : @favourite.Estate.Price.ToToman() </p>
                                 </div>
+                                <form method="post">
+                                    <button asp-page-handler="RemoveToFavourites" asp-route-Id="@favourite.Id" class="btn btn-danger" type="submit"> حذف از علاقه مندی ها </button>
+                                </form>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 }
             </div>

@@ -9,11 +9,15 @@ namespace RealEstate_Domain.InterFaces
 {
     public interface IFavouriteRepository
     {
-        Task<Favourite> IsExistFavourite(string userId, int estateId);
+        Task<Favourite?> IsExistFavourite(string userId, int estateId);
+
+        Task<Favourite?> GetFavouriteById(int id);
 
         Task AddFavourite(Favourite favourite);
 
         Task<List<Favourite>> GetAllFavourites(string userId);
+
+        Task RemoveFavourite(Favourite favourite);
 
         Task SaveChanges();
     }

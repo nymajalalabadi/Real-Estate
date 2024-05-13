@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RealEstate_Application.Services.Implementations;
 using RealEstate_Application.Services.Interfaces;
 using RealEstate_DataLayer.Context;
 using RealEstate_Domain.Entities.Common;
@@ -38,6 +39,27 @@ namespace RealEstate_Web.Pages.Favourites
             return Page();
 
         }
-    }
 
+        public async Task<IActionResult> OnPostRemoveToFavourites(int Id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Identity/Account/Login?returnUrl=/Favourites");
+            }
+
+            if (Id <= 0)
+            {
+                return NotFound();
+            }
+
+            var favourite = await _favouriteService.GetFavouriteById(Id);
+
+            if (favourite != null)
+            {
+                await _favouriteService.DeleteFavourite(favourite);
+            }
+
+            return RedirectToPage("Index");
+        }
+    }
 }

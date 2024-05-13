@@ -23,9 +23,14 @@ namespace RealEstate_DataLayer.Repositories
 
         #endregion
 
-        public async Task<Favourite> IsExistFavourite(string userId, int estateId)
+        public async Task<Favourite?> IsExistFavourite(string userId, int estateId)
         {
             return await _context.Favourites.FirstOrDefaultAsync(f => f.UserId == userId && f.EstateId == estateId);
+        }
+
+        public async Task<Favourite?> GetFavouriteById(int id)
+        {
+            return await _context.Favourites.FirstOrDefaultAsync(f => f.Id == id);
         }
 
         public async Task AddFavourite(Favourite favourite)
@@ -36,6 +41,11 @@ namespace RealEstate_DataLayer.Repositories
         public async Task<List<Favourite>> GetAllFavourites(string userId)
         {
             return await _context.Favourites.Include(f => f.Estate).Where(f => f.UserId == userId).ToListAsync();
+        }
+
+        public async Task RemoveFavourite(Favourite favourite)
+        {
+             _context.Favourites.Remove(favourite);
         }
 
         public async Task SaveChanges()

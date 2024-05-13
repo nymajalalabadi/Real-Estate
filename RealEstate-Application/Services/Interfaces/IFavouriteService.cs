@@ -10,11 +10,15 @@ namespace RealEstate_Application.Services.Interfaces
 {
     public interface IFavouriteService
     {
-        Task<Favourite> IsExistFavourite(string userId, int estateId);
+        Task<Favourite?> IsExistFavourite(string userId, int estateId);
+
+        Task<Favourite?> GetFavouriteById(int id);
 
         Task CreateFavourite(string userId, int estateId);
 
         Task<List<Favourite>> GetFavourites(string userId);
+
+        Task DeleteFavourite(Favourite favourite);
 
     }
 }

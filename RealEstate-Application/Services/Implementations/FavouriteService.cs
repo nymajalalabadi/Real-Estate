@@ -24,9 +24,14 @@ namespace RealEstate_Application.Services.Implementations
 
         #endregion
 
-        public async Task<Favourite> IsExistFavourite(string userId, int estateId)
+        public async Task<Favourite?> IsExistFavourite(string userId, int estateId)
         {
             return await _favouriteRepository.IsExistFavourite(userId, estateId);
+        }
+
+        public async Task<Favourite?> GetFavouriteById(int id)
+        {
+            return await _favouriteRepository.GetFavouriteById(id);
         }
 
         public async Task CreateFavourite(string userId, int estateId)
@@ -46,5 +51,18 @@ namespace RealEstate_Application.Services.Implementations
         {
             return await _favouriteRepository.GetAllFavourites(userId);
         }
+
+        public async Task DeleteFavourite(Favourite favourite)
+        {
+            if (favourite == null)
+            {
+                return;
+            }
+
+            await _favouriteRepository.RemoveFavourite(favourite);
+
+            await _favouriteRepository.SaveChanges();
+        }
+
     }
 }
