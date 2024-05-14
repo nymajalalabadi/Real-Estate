@@ -11,4 +11,10 @@ namespace RealEstate_Domain.Entities.Role
         public const string Admin = "admin";
         public const string User = "user";
     }
+
+    public static class AuthorizationPolicies
+    {
+        public const string AdminPolicy = "adminpolicy";
+    }
+
 }

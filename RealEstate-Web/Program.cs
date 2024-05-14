@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RealEstate_DataLayer.Context;
 using RealEstate_Domain.Entities.Account;
+using RealEstate_Domain.Entities.Role;
 using RealEstate_IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,19 @@ builder.Services.AddDefaultIdentity<UserModel>()
 DependencyContainer.RejosterService(builder.Services);
 
 #endregion
+
+#region Authorization
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(AuthorizationPolicies.AdminPolicy, p => p.RequireRole(Roles.Admin));
+});
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/Panel/Admin", AuthorizationPolicies.AdminPolicy);
+});
+#endregion
+
 
 builder.Services.AddRazorPages();
 
