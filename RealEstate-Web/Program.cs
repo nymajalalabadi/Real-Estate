@@ -38,14 +38,12 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(AuthorizationPolicies.AdminPolicy, p => p.RequireRole(Roles.Admin));
 });
+
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AuthorizeFolder("/Panel/Admin", AuthorizationPolicies.AdminPolicy);
+    options.Conventions.AuthorizeFolder("/Identity/Admin", AuthorizationPolicies.AdminPolicy);
 });
 #endregion
-
-
-builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
