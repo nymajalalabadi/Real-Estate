@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-center align-items-center">
             @if (SignInManager.IsSignedIn(User))
             {
-                <a href="/Panel/Favourites" title="Manage">سلام @Model?.FullName</a>
+                <a href="/Favourites/" title="Manage">سلام @Model?.FullName</a>
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                     <button type="submit" class=" btn btn-link">خروج</button>
                 </form>
